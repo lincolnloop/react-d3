@@ -160,6 +160,7 @@ var Axes = React.createClass({
             width={props.chartWidth}
             height={props.chartHeight}
             stroke={props.axesColor}
+            xAxisTickInterval={{unit: 'day', interval: 3}}
           />
         </g>
     );
@@ -205,10 +206,10 @@ var LineChart = React.createClass({
     var xValues = _.pluck(allValues, 'x');
     var yValues = _.pluck(allValues, 'y');
 
-    var xScale = d3.scale.linear()
-      .domain([d3.min([d3.min(xValues), 0]), d3.max(xValues)])
-      .range([0, chartWidth]);
+    var x = d3.time.scale().range([0, chartWidth]);
 
+    var xScale = x.domain(d3.extent(xValues));
+    // xScale.ticks(d3.time.day, 3);
     var yScale = d3.scale.linear()
       .domain([d3.min([d3.min(yValues), 0]), d3.max(yValues)])
       .range([chartHeight, 0]);
