@@ -160,7 +160,9 @@ var Axes = React.createClass({
             width={props.chartWidth}
             height={props.chartHeight}
             stroke={props.axesColor}
-            xAxisTickInterval={{unit: 'day', interval: 3}}
+            xAxisTickInterval={{unit: 'day', interval: 7}}
+            xAxisTickFormat={d3.time.format('%_m/%_d')}
+            xAxisTickPadding={10}
           />
         </g>
     );

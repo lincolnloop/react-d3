@@ -50,6 +50,19 @@ exports.XAxis = React.createClass({
       xAxis.ticks(props.xAxisTickCount);
     }
 
+    console.log('AXES', props);
+    if (props.xAxisTickFormat) {
+      console.log('AXES adding tickFormat');
+      xAxis.tickFormat(props.xAxisTickFormat);
+    }
+
+    if (props.xAxisTickPadding) {
+      console.log('AXES tick padding')
+      xAxis.tickPadding(props.xAxisTickPadding);
+    }
+
+    xAxis.outerTickSize(0);
+
     var xAxisClassSelect = props.xAxisClassName.replace(/ /g, '.');
 
     if (xAxisClassSelect[0] != '.') {
